@@ -17,39 +17,49 @@ class App extends Component {
     }
     this.handleClick = this.handleClick.bind(this)
   }
-
-  handleClick () {
-    let randomSelection = Math.floor(Math.random() * 211);
-    this.setState((state) => ({
-      currentQuote: state.quotes[randomSelection]
-    }))
+  handleClick = soundType => {
+    console.log(soundType)
+    this.setState({displaySound:soundType})
   }
+  // handleClick (soundType) {
+  //   this.setState((state) => ({
+  //     displaySound: soundType
+  //   }))
+  // }
   render() {
     return (
-      <div className="App">
-          <img src={'https://s-media-cache-ak0.pinimg.com/236x/33/58/18/335818b563208954ab8fc8896d2d3a18.jpg'} className="App-logo" alt="logo" />
-          <Card id="quote-box">
-            <CardActionArea>
-                <CardContent>
-                  <Typography component="h1" id="text">
-                    "{this.state.currentQuote.quote ? this.state.currentQuote.quote : 'placeholder'}"
-                  </Typography>
-                  <Typography variant="h5" component="h2" id="author">
-                    - {this.state.currentQuote.author ? this.state.currentQuote.author + ` #${this.state.currentQuote.id}` : 'some author'}
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary" id="new-quote" onClick={this.handleClick}>
-                  New Quote
-                </Button>
-                <Button  size="small" color="primary"  href={`https://twitter.com/intent/tweet?text=${this.state.currentQuote.quote}`} id="tweet-quote">
-                  Tweet It
-                </Button>
-              </CardActions>
-            </Card>
+      <div className="App" id="drum-machine">
+        <div id="display">
+        </div>
+        <div id="drum-components">
+          <DrumPadElement sound={'elephant'} actionKey={'Q'} onClickDrum={this.handleClick}/>
+          <DrumPadElement sound={'trumpet'} actionKey={'W'} onClickDrum={this.handleClick}/>
+        </div>
       </div>
     );
+  }
+}
+
+class DrumPadElement extends Component {
+  // constructor(props){
+  //   super(props)
+
+  // }
+  handleClick = () => {
+    this.props.onClickDrum(this.props.sound)
+  }
+  render(){
+    return(
+      <div className="drum-pad" id={this.props.sound}>
+        <Button 
+          onClick={this.handleClick}
+          color="primary"
+          variant="contained"
+        >
+          {this.props.actionKey}
+        </Button>
+      </div>
+    )
   }
 }
 
