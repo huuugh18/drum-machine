@@ -1,35 +1,34 @@
 .App {
   text-align: center;
-  background-image: url('http://vignette2.wikia.nocookie.net/simpsons/images/b/b7/Simspons_Clouds.jpg/revision/latest?cb=20100824223324');
+  background-image: url('./background-image.jpg');
   min-height: 100vh;
   display: grid;
   grid-template-areas: 
-  ". homer ."
-  ". quoteBox .";
+  ". display ."
+  ". drumKit .";
   justify-items: center;
   align-items: center;
+  grid-template-columns: 20% 1fr 20%;
 }
-.App-logo {
-  grid-area: homer;
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-
 .App-link {
   color: #61dafb;
 }
-#quote-box{
-  grid-area: quoteBox;
+#display-paper{
+  grid-area: display;
+  padding: 20px;
+  min-width: 400px;
+}
+#drum-kit{
+  grid-area: drumKit;
+  align-self:start;
   max-width: 500px;
   width: 500px;
-  /* height: 350px; */
+  display: flex;
+  justify-content: center;
 }
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drum-pad {
+  margin: 10px !important;
+}
+.drum-pad-button{
+  width: 150px;
 }
