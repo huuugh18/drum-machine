@@ -25,10 +25,8 @@
   width: 500px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .drum-pad {
   margin: 10px !important;
-}
-.drum-pad-button{
-  width: 150px;
 }

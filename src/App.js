@@ -37,7 +37,7 @@ class App extends Component {
             {this.state.displaySound}
           </Typography>
         </Paper>
-        <div id="drum-kit">
+        <Paper id="drum-kit">
           {
             drumElements.map(i => (
               <DrumPadElement
@@ -50,7 +50,7 @@ class App extends Component {
             ))
           }
 
-        </div>
+        </Paper>
       </div>
     );
   }
@@ -83,7 +83,7 @@ class DrumPadElement extends Component {
           id={this.props.sound}
           onClick={this.handleDrumClick}
           color='primary'
-          variant='contained'
+          variant='outlined'
           size='large'
         >
           {this.props.actionKey}
